@@ -1369,10 +1369,8 @@ $( document ).ready(function() {
                                 showRewardedPiAd();
                             });
                             
-                            /*
-                             * This is the one which works
-                             * if(show_pi_ad_user && ["Mainnet ON", "Mainnet OFF"].includes($("#mainnet").val()))
-                                showRewardedPiAd();*/
+                            if(show_pi_ad_user && ["Mainnet ON", "Mainnet OFF"].includes($("#mainnet").val()))
+                                showRewardedPiAd();
                             
                             /*if(show_pi_ad_user && ["Mainnet ON", "Mainnet OFF"].includes($("#mainnet").val()))
                             {
@@ -1441,13 +1439,13 @@ $( document ).ready(function() {
             
             if(["Mainnet ON", "Mainnet OFF"].includes($("#mainnet").val()))
             {
-                //showPiAds(Pi, true);
+                showPiAds(Pi, true);
             }
         }
         
         if(["Mainnet ON", "Mainnet OFF"].includes($("#mainnet").val()))
         {
-            /*$('.showInterstitialAd').find('a.btn').click(function(e) {
+            $('.showInterstitialAd').find('a.btn').click(function(e) {
                 if($(this).attr('target') != "_blank")
                 {
                     if($('#pi_ad_automatic').is(':checked') && !unblocked) {
@@ -1467,7 +1465,7 @@ $( document ).ready(function() {
                         showPiInterstitialAds(Pi, false);
                     }
                 }
-            });*/
+            });
         }
     
     })();

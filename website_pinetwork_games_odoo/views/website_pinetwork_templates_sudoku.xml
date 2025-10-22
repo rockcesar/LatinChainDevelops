@@ -43,9 +43,7 @@
                     <script src="https://sdk.minepi.com/pi-sdk.js"></script>
                     <script type="text/javascript" src="/website_pinetwork_games_odoo/static/src/pidoku/functions.js?v=1.156"></script>
                     
-                    <!--<script t-if="mainnet in ['Testnet ON', 'Testnet OFF']" async="true" t-att-src="google_adsense" crossorigin="anonymous"></script>-->
-                    
-                    <script async="true" t-att-src="google_adsense" crossorigin="anonymous"></script>
+                    <script t-if="mainnet in ['Testnet ON', 'Testnet OFF']" async="true" t-att-src="google_adsense" crossorigin="anonymous"></script>
                                         
                     <!--<script type="text/javascript">
                       window._taboola = window._taboola || [];
@@ -177,9 +175,7 @@
                         </p>
                     </div>
                     
-                    <!--<div class="container text-center" t-if="mainnet in ['Testnet ON', 'Testnet OFF']">-->
-                    
-                    <div class="container text-center">
+                    <div class="container text-center" t-if="mainnet in ['Testnet ON', 'Testnet OFF']">
                         
                         <!-- LatinChain Ad responsive -->
                         
@@ -675,9 +671,7 @@
                         </style>
                     </div> <!-- /container -->
                     
-                    <!--<div class="container text-center" t-if="mainnet in ['Testnet ON', 'Testnet OFF']">-->
-                    
-                    <div class="container text-center">
+                    <div class="container text-center" t-if="mainnet in ['Testnet ON', 'Testnet OFF']">
                         <!-- LatinChain Ad responsive 2 -->
                         
                         <ins class="adsbygoogle"
