@@ -6,6 +6,8 @@ const FEED_CONFIGS = [
     //{ name: "China Daily", url: "http://www.chinadaily.com.cn/rss/world_rss.xml" },
     { name: "Times of India", url: "https://timesofindia.indiatimes.com/rssfeedmostrecent.cms" },
     { name: "SCMP (South China Morning Post)", url: "https://www.scmp.com/rss/91/feed" },
+    { name: "Contelegraph", url: "https://cointelegraph.com/rss" },
+    { name: "TSMH (The Sydney Morning Herald)", url: "https://www.smh.com.au/rss/feed.xml" },
     { name: "RT (News)", url: "https://www.rt.com/rss/news" },
 ];
 
@@ -47,9 +49,23 @@ function parseRss(xmlText) {
             const title = titleElement.textContent.trim();
             const link = linkElement.textContent.trim();
             
-            // Intentar un parseo de fecha más robusto
-            let date = dateElement ? new Date(dateElement.textContent) : null;
-            date = date && !isNaN(date) ? date.toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' }) : 'Fecha desconocida';
+            let formattedDate = 'Fecha desconocida';
+            let dateText = dateElement ? dateElement.textContent : null;
+            
+            if (dateText) {
+                // FIX: Limpieza agresiva de la cadena de fecha para mejorar el parseo de new Date().
+                // 1. Eliminar contenido entre paréntesis (ej. nombres de zonas horarias).
+                let cleanedDateText = dateText.replace(/\s+\(.*?\)/g, '');
+                // 2. Reemplazar comas por espacios, ya que confunden el parseo en algunos formatos RFC.
+                cleanedDateText = cleanedDateText.replace(/,/g, ' ').trim(); 
+
+                const date = new Date(cleanedDateText);
+                
+                // Verificar la validez de la fecha utilizando getTime()
+                if (date && !isNaN(date.getTime())) {
+                    formattedDate = date.toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' });
+                }
+            }
 
             // Limpiar el título de posibles prefijos "CDATA:" o "Feeds:"
             const cleanTitle = title.replace(/^<!\[CDATA\[|\]\]>$/g, '').trim();
@@ -57,7 +73,7 @@ function parseRss(xmlText) {
             articles.push({
                 title: cleanTitle,
                 link: link,
-                date: date
+                date: formattedDate
             });
         }
     });
