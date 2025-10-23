@@ -4,6 +4,7 @@ const FEED_CONFIGS = [
     //{ name: "CNN (Stories principales)", url: "http://rss.cnn.com/rss/cnn_topstories.rss" },
     //{ name: "CNN en español", url: "https://cnnespanol.cnn.com/feed/" },
     //{ name: "China Daily", url: "http://www.chinadaily.com.cn/rss/world_rss.xml" },
+    { name: "Times of India", url: "https://timesofindia.indiatimes.com/rssfeedmostrecent.cms" },
     { name: "SCMP (South China Morning Post)", url: "https://www.scmp.com/rss/91/feed" },
     { name: "RT (News)", url: "https://www.rt.com/rss/news" },
 ];
