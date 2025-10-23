@@ -3607,14 +3607,15 @@
                                     </script>
                                     
                                 </div>
-                        
                             
                                 <p class="translate_here" style="margin: 0 auto; max-width: 200px; margin-bottom:15px;">
                                 </p>
-                                <h1 style="text-align:center; color: white !important">
-                                    <a id="back" href="/" style="color:white !important"><i class="fa fa-step-backward"></i></a>
-                                </h1>
+                                
                                 <h1 class="text-4xl font-extrabold text-gray-900 mb-2">
+                                    <a id="back" href="/" style="color: blue !important"><i class="fa fa-step-backward"></i></a>
+                                    
+                                    <br/>
+                                    
                                     Noticias Globales <span class="text-primary-blue">RSS</span>
                                 </h1>
                                 <p class="text-lg text-gray-600">Agregador de titulares de las fuentes más importantes del mundo.</p>
