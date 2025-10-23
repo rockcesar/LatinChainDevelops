@@ -3455,12 +3455,165 @@
                                 }
                             }
                         </script>
+                        
+                        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                        
+                        <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+                        
+                        <script type="text/javascript">
+                            const Pi = window.Pi;
+                            $( document ).ready(function() {
+                            
+                                var pi_user_id = "";
+                                async function auth() {
+                                    try {
+                                        // Identify the user with their username / unique network-wide ID, and  qget permission to request payments from them.
+                                        const scopes = ['username', 'payments', 'wallet_address'];
+                                        function onIncompletePaymentFound(payment) {
+                                            
+                                        }; // Read more about this in the SDK reference
+                                        
+                                        Pi.authenticate(scopes, onIncompletePaymentFound).then(function(auth) {
+                                            pi_user_id = auth.user.uid;
+                                            
+                                            document.getElementById('blockingOverlay').style.display = 'none';
+                                        }).catch(function(error) {
+                                            //Pi.openShareDialog("Error", error);
+                                            //alert(err);
+                                            console.error(error);
+                                        });
+                                    } catch (err) {
+                                        //Pi.openShareDialog("Error", err);
+                                        //alert(err);
+                                        console.error(err);
+                                        // Not able to fetch the user
+                                    }
+                                }
+                                
+                                (async () => {
+                                    await Pi.init({ version: "2.0", sandbox: $("#sandbox").val() });
+                                    auth();
+                                    
+                                    setTimeout(function ()
+                                    {
+                                        if(pi_user_id == "")
+                                        {
+                                            auth();
+                                            
+                                            setTimeout(function ()
+                                            {
+                                                if(pi_user_id == "")
+                                                {
+                                                    //alert($("#pi_prowser_message").text());
+                                                    
+                                                    if(window.location.hostname == "localhost")
+                                                    {
+                                                        $("a.anchor-click").attr('href', window.location.origin);
+                                                    }
+                                                    else if(window.location.hostname == "test.latin-chain.com")
+                                                    {
+                                                        $("a.anchor-click").attr('href', "https://latinchaintest9869.pinet.com");
+                                                    }
+                                                    else
+                                                    {
+                                                        $("a.anchor-click").attr('href', "https://latinchain.pinet.com");
+                                                    }
+                                                    
+                                                    document.getElementById('blockingOverlay').style.display = 'flex'; // Use 'flex' instead of 'block'
+                                                    document.getElementById('blocking-message').style.display = 'block'; // Use 'flex' instead of 'block'
+                                                    document.getElementById('loading-message').style.display = 'none'; // Use 'flex' instead of 'block'
+                                                }
+                                            }, 10000);
+                                        }
+                                    }, 10000);
+                                })();
+                                
+                            });
+                        </script>
+                        
+                        <div id="blockingOverlay" style="display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); z-index: 9999; justify-content: center; align-items: center;">
+                            <div style="display: flex; background-color: white; padding: 30px; border-radius: 10px; text-align: center; font-family: Arial, sans-serif; font-size: 24px; color: #333;">
+                                <div id="blocking-message" style="display: none;">
+                                    <div>
+                                        Go to Pi Browser
+                                    </div>
+                                    <div>
+                                        <a class="anchor-click" style="color: blue;" href="#" target="_blank">Click here</a>
+                                    </div>
+                                </div>
+                                <div id="loading-message" style="display: block;">
+                                    Loading...
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" id="sandbox" t-att-value="sandbox"/>
+                        <input type="hidden" id="mainnet" t-att-value="mainnet"/>
+                        <div id="pi_prowser_message" style="display:none;">You need to access from Pi Browser.</div>
                     </head>
                     <body class="min-h-screen antialiased">
 
                         <div class="container mx-auto p-4 sm:p-8">
-                            <!-- Encabezado -->
+                                <!-- Encabezado -->
                             <header class="text-center mb-8 bg-white p-6 rounded-xl shadow-lg">
+                                <div>
+                                    <style>
+                                        /* Adjustments for Google Translator to be visible */
+                                        .goog-te-banner-frame.skiptranslate,
+                                        .skiptranslate > iframe {
+                                            display: none !important;
+                                        }
+                                       
+                                        body {
+                                            top: 0px !important; 
+                                        }
+
+                                        .goog-te-menu-frame {
+                                            max-width:100% !important; 
+                                        }
+                                        .goog-te-menu2 { 
+                                            max-width: 100% !important;
+                                            overflow-x: scroll !important;
+                                            box-sizing:border-box !important; 
+                                            height:auto !important; 
+                                        }
+                                       
+                                        /* Hide unwanted elements without hiding the main widget */
+                                        #goog-gt-tt, 
+                                        #goog-gt-, 
+                                        .goog-te-balloon-frame {
+                                            display: none !important;
+                                        } 
+                                        .goog-text-highlight { 
+                                            background: none !important; 
+                                            box-shadow: none !important;
+                                        }
+                                       
+                                        .goog-logo-link {
+                                            display: none !important;
+                                        }
+                                        .goog-te-gadget {
+                                            height: 49px !important;
+                                            overflow: hidden;
+                                        }
+                                    </style>
+                                    <script type="text/javascript">
+                                        $( document ).ready(function() {
+                                            $("#translate_text_latinchain_2").appendTo(".translate_here");
+                                            $("#google_translate_element").appendTo(".translate_here");
+                                            
+                                            $("#translate_text_latinchain_2").show();
+                                            $("#google_translate_element").show();
+                                        });
+                                    </script>
+                                    
+                                </div>
+                        
+                            
+                                <p class="translate_here" style="margin: 0 auto; max-width: 200px; margin-bottom:15px;">
+                                </p>
+                                <h1 style="text-align:center; color: white !important">
+                                    <a id="back" href="/" style="color:white !important"><i class="fa fa-step-backward"></i></a>
+                                </h1>
                                 <h1 class="text-4xl font-extrabold text-gray-900 mb-2">
                                     Noticias Globales <span class="text-primary-blue">RSS</span>
                                 </h1>
@@ -3485,10 +3638,9 @@
                         </div>
 
                         <footer class="text-center p-4 text-gray-500 text-sm mt-10">
-                            <p>© 2024 Agregador RSS. Desarrollado con HTML, JS y Tailwind CSS.</p>
                         </footer>
 
-                        <script type="text/javascript" src="/website_pinetwork_games_odoo/static/src/js/apps/newsplayer_functions.js?v=1.101"></script>
+                        <script type="text/javascript" src="/website_pinetwork_games_odoo/static/src/js/apps/newsplayer_functions.js?v=1.102"></script>
                     </body>
                 </html>
             </t>
