@@ -3612,7 +3612,11 @@
                                 </p>
                                 
                                 <h1 class="text-4xl font-extrabold text-gray-900 mb-2">
-                                    <a id="back" href="/" style="color: blue !important"><i class="fa fa-step-backward"></i></a>
+                                    <div class="flex justify-center text-center">
+                                        <div class="justify-content-center text-center" style="border: 1px solid blue; border-radius: 20px; padding: 5px; color: blue !important; max-width: 50px; min-width: 50px">
+                                            <a id="back" href="/" style="color: blue !important"><i class="fa fa-step-backward"></i></a>
+                                        </div>
+                                    </div>
                                     
                                     <br/>
                                     
